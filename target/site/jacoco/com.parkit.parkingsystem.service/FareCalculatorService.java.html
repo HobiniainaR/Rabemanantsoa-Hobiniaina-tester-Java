@@ -55,5 +55,17 @@ import java.util.Date;
 <span class="nc" id="L55">            ticket.setPrice(duration*Fare.BIKE_RATE_PER_HOUR);</span>
         }
 <span class="fc" id="L57">    }</span>
+    
+    public void calculateFare(Ticket ticket, boolean discount) {
+<span class="fc" id="L60">            calculateFare(ticket);</span>
+<span class="fc" id="L61">            applyDiscount(ticket, discount);</span>
+<span class="fc" id="L62">    }</span>
+
+    private void applyDiscount(Ticket ticket, boolean discount) {
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">            if (discount) {</span>
+<span class="fc" id="L66">                ticket.setPrice(0.95 * ticket.getPrice());    </span>
+            }
+<span class="fc" id="L68">    }   </span>
 }
+
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

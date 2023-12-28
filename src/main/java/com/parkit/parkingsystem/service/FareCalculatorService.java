@@ -55,4 +55,16 @@ public class FareCalculatorService {
             ticket.setPrice(duration*Fare.BIKE_RATE_PER_HOUR);
         }
     }
+    
+    public void calculateFare(Ticket ticket, boolean discount) {
+            calculateFare(ticket);
+            applyDiscount(ticket, discount);
+    }
+
+    private void applyDiscount(Ticket ticket, boolean discount) {
+            if (discount) {
+                ticket.setPrice(0.95 * ticket.getPrice());    
+            }
+    }   
 }
+
