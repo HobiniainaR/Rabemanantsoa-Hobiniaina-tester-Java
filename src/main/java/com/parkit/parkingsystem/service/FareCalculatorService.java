@@ -6,12 +6,15 @@ import com.parkit.parkingsystem.model.Ticket;
 import java.util.Date;
 
 public class FareCalculatorService {
-
-    public void calculateFare(Ticket ticket) {
+	public void calculateFare(Ticket ticket){
+	       calculateFare(ticket,true);
+	}
+    public void calculateFare(Ticket ticket,boolean discount) {
+    	
         if (ticket.getInTime() == null || ticket.getOutTime() == null) {
             throw new IllegalArgumentException("InTime or OutTime is missing");
         }
-
+       
         Date inTime = ticket.getInTime();
         Date outTime = ticket.getOutTime();
 
@@ -34,6 +37,7 @@ public class FareCalculatorService {
             default:
                 throw new IllegalArgumentException("Unknown parking type");
         }
+        applyDiscount( ticket, discount);
     }
 
     private void calculateCarFare(Ticket ticket, double duration) {
@@ -56,12 +60,7 @@ public class FareCalculatorService {
         }
     }
     
-    public void calculateFare(Ticket ticket, boolean discount) {
-            calculateFare(ticket);
-            applyDiscount(ticket, discount);
-    }
-
-    private void applyDiscount(Ticket ticket, boolean discount) {
+      private void applyDiscount(Ticket ticket, boolean discount) {
             if (discount) {
                 ticket.setPrice(0.95 * ticket.getPrice());    
             }
