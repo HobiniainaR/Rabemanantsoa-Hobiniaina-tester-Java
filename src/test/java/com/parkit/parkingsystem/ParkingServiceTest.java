@@ -43,17 +43,15 @@ public class ParkingServiceTest {
      }
 
      @Test
-     public void processExitingVehicleTest() {
+     public void processExitingVehicleTest() throws Exception {
          //GIVEN
-         try {
+         
              when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
              when(ticketDAO.updateTicket(any(Ticket.class))).thenReturn(true);
              when(ticketDAO.getTicket(anyString())).thenReturn(ticket);
              when(parkingSpotDAO.updateParking(any(ParkingSpot.class))).thenReturn(true);
-         } catch (Exception e) {
-             e.printStackTrace();
-             throw  new RuntimeException("Failed to set up test mock objects");
-         }
+        
+         
          //WHEN
          parkingService.processExitingVehicle();
          //THEN
@@ -63,18 +61,16 @@ public class ParkingServiceTest {
      }
      
      @Test
-     public void processIncomingVehicleTest() {
+     public void processIncomingVehicleTest() throws Exception {
          //GIVEN
-         try {
+         
              when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
              when(inputReaderUtil.readSelection()).thenReturn(1);
              when(ticketDAO.saveTicket(any(Ticket.class))).thenReturn(true);
              when(parkingSpotDAO.getNextAvailableSlot(any(ParkingType.class))).thenReturn(1);
              when(parkingSpotDAO.updateParking(any(ParkingSpot.class))).thenReturn(true);
-         } catch (Exception e) {
-             e.printStackTrace();
-             throw new RuntimeException("Failed to set up test mock objects");
-         }
+        
+         
          //WHEN
          parkingService.processIncomingVehicle();
          //THEN
@@ -84,16 +80,14 @@ public class ParkingServiceTest {
      }
    
      @Test
-     public void processExitingVehucleTestUnableUpdate() {
+     public void processExitingVehucleTestUnableUpdate() throws Exception {
     	//GIVEN
-         try {
+         
         	 when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
         	 when(ticketDAO.getTicket(anyString())).thenReturn(ticket);
              when(ticketDAO.updateTicket(any(Ticket.class))).thenReturn(false);
-         } catch (Exception e) {
-             e.printStackTrace();
-             throw  new RuntimeException("Failed to set up test mock objects");
-         }
+         
+         
          //WHEN
          parkingService.processExitingVehicle();
          //THEN
@@ -104,29 +98,26 @@ public class ParkingServiceTest {
      @Test 
      public void testGetNextParkingNumberIfAvailable() {
     	 //GIVEN
-    	 try {
+    	 
     		 when(inputReaderUtil.readSelection()).thenReturn(1);
              when(parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR)).thenReturn(1);
-         } catch (Exception e) {
-             e.printStackTrace();
-             throw new RuntimeException("Failed to set up test mock objects");
-    	 }
+         
+    	 
     	 //WHEN
     	 ParkingSpot parkingSpot = parkingService.getNextParkingNumberIfAvailable();
     	 //THEN
     	 assertNotNull(parkingSpot);
+    	 assertEquals(1,parkingSpot.getId());
+    	 
      }
      
      @Test
      public void testGetNextParkingNumberIfAvailableParkingNumberNotFound() {
     	 //GIVEN
-    	 try {
+    	
              when(inputReaderUtil.readSelection()).thenReturn(1);
              when(parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR)).thenReturn(0);
-         } catch (Exception e) {
-             e.printStackTrace();
-             throw new RuntimeException("Failed to set up test mock objects");
-         }
+         
     	 //WHEN
     	 ParkingSpot parkingSpot = parkingService.getNextParkingNumberIfAvailable();
     	 //THEN
@@ -136,12 +127,10 @@ public class ParkingServiceTest {
      @Test
      public void testGetNextParkingNumberIfAvailableParkingNumberWrongArgum() {
     	 //GIVEN
-    	 try {
+    	
              when(inputReaderUtil.readSelection()).thenReturn(3);
-         } catch (Exception e) {
-             e.printStackTrace();
-             throw new RuntimeException("Failed to set up test mock objects");
-         }
+        
+         
     	 //WHEN
     	 ParkingSpot parkingSpot = parkingService.getNextParkingNumberIfAvailable();
     	 //THEN

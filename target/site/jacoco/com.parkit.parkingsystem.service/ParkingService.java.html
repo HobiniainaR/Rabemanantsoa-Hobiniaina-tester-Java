@@ -40,7 +40,7 @@ public class ParkingService {
                 //ID, PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME)
                 //ticket.setId(ticketID);
 <span class="fc" id="L42">                ticket.setParkingSpot(parkingSpot);</span>
-<span class="fc" id="L43">                ticket.setVehicleRegNumber(vehicleRegNumber);</span>
+//                ticket.setVehicleRegNumber(vehicleRegNumber);
 <span class="fc" id="L44">                ticket.setPrice(0);</span>
 <span class="fc" id="L45">                ticket.setInTime(inTime);</span>
 <span class="fc" id="L46">                ticket.setOutTime(null);</span>
@@ -106,7 +106,7 @@ public class ParkingService {
 <span class="fc" id="L106">            Ticket ticket = ticketDAO.getTicket(vehicleRegNumber);</span>
 <span class="fc" id="L107">            Date outTime = new Date();</span>
 <span class="fc" id="L108">            ticket.setOutTime(outTime);</span>
-<span class="fc bfc" id="L109" title="All 2 branches covered.">            fareCalculatorService.calculateFare(ticket,ticketDAO.getNbTicket(vehicleRegNumber)&gt;1);</span>
+<span class="pc bpc" id="L109" title="1 of 2 branches missed.">            fareCalculatorService.calculateFare(ticket,ticketDAO.getNbTicket(vehicleRegNumber)&gt;1);</span>
 <span class="fc bfc" id="L110" title="All 2 branches covered.">            if(ticketDAO.updateTicket(ticket)) {</span>
 <span class="fc" id="L111">                ParkingSpot parkingSpot = ticket.getParkingSpot();</span>
 <span class="fc" id="L112">                parkingSpot.setAvailable(true);</span>
