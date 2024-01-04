@@ -53,10 +53,10 @@ import java.util.Date;
     private void calculateBikeFare(Ticket ticket, double duration) {
 <span class="fc bfc" id="L54" title="All 2 branches covered.">        if (duration &lt; 0.5) {</span>
 <span class="fc" id="L55">            ticket.setPrice(0);</span>
-<span class="pc bpc" id="L56" title="1 of 2 branches missed.">        } else if (duration &lt;= 1) {</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        } else if (duration &lt;= 1) {</span>
 <span class="fc" id="L57">            ticket.setPrice(duration*Fare.BIKE_RATE_PER_HOUR);</span>
         } else {
-<span class="nc" id="L59">            ticket.setPrice(duration*Fare.BIKE_RATE_PER_HOUR);</span>
+<span class="fc" id="L59">            ticket.setPrice(duration*Fare.BIKE_RATE_PER_HOUR);</span>
         }
 <span class="fc" id="L61">    }</span>
     
