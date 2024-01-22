@@ -10,17 +10,13 @@ public class FareCalculatorService {
 	       calculateFare(ticket,true);
 	}
     public void calculateFare(Ticket ticket,boolean discount) {
-    	
-        if (ticket.getInTime() == null || ticket.getOutTime() == null) {
-            throw new IllegalArgumentException("InTime or OutTime is missing");
-        }
-       
-        Date inTime = ticket.getInTime();
-        Date outTime = ticket.getOutTime();
 
-        //TODO: Some tests are failing here. Need to check if this logic is correct
-        long durationInMillis = outTime.getTime() - inTime.getTime();
-        double duration = durationInMillis / (60.0 * 60.0 * 1000.0);
+        if( (ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime())) ){
+            throw new IllegalArgumentException("Out time provided is incorrect:"+ticket.getOutTime().toString());
+        }
+        long inHour =  ticket.getInTime().getTime();
+        long outHour = ticket.getOutTime().getTime();
+        double duration = (double) (outHour - inHour) /(60*60*1000);
 
         if (duration < 0) {
             throw new IllegalArgumentException("OutTime is before InTime");

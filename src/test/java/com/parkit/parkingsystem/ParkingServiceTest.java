@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.*;
+import org.mockito.stubbing.OngoingStubbing;
 
 import java.util.Date;
 
@@ -34,7 +35,7 @@ public class ParkingServiceTest {
     private static ParkingSpot parkingSpot;
     @BeforeEach
     private void setUpPerTest() {
-    	 ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
+    	 parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
          ticket = new Ticket();
          ticket.setInTime(new Date(System.currentTimeMillis() - (60*60*1000)));
          ticket.setParkingSpot(parkingSpot);
@@ -80,7 +81,7 @@ public class ParkingServiceTest {
      }
    
      @Test
-     public void processExitingVehucleTestUnableUpdate() throws Exception {
+     public void processExitingVehicleTestUnableUpdate() throws Exception {
     	//GIVEN
          
         	 when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
