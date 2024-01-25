@@ -22,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Date;
 
+
 @ExtendWith(MockitoExtension.class)
 public class ParkingDataBaseIT {
 
@@ -48,6 +49,7 @@ public class ParkingDataBaseIT {
         when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
         when(inputReaderUtil.readSelection()).thenReturn(1);
         dataBasePrepareService.clearDataBaseEntries();
+
     }
 
     @AfterAll
@@ -57,31 +59,81 @@ public class ParkingDataBaseIT {
 
     @Test
     public void testParkingACar() {
-
+        //GIVEN
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
-
+        //THEN
         parkingService.processIncomingVehicle();
-
+        //WHEN
         Ticket ticket = ticketDAO.getTicket("ABCDEF");
 
-        assertEquals(ParkingType.CAR,ticket.getParkingSpot().getParkingType());
+        assertEquals(ParkingType.CAR, ticket.getParkingSpot().getParkingType());
         assertNotNull(ticket);
-        assertEquals(1,ticket.getId());
-        assertEquals("ABCDEF",ticket.getVehicleRegNumber());
+        assertEquals(1, ticket.getId());
+        assertEquals("ABCDEF", ticket.getVehicleRegNumber());
         assertNotNull(ticket.getInTime());
-        assertEquals(1,ticketDAO.getNbTicket("ABCDEF"));
+        assertEquals(1, ticketDAO.getNbTicket("ABCDEF"));
         assertFalse(ticket.getParkingSpot().isAvailable());
         assertTrue(parkingSpotDAO.updateParking(ticket.getParkingSpot()));
     }
 
 
     @Test
-    public void testParkingLotExit() throws Exception {
-        testParkingACar();
+    public void testParkingLotExit()  {
+        //GIVEN
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
-        parkingService.processExitingVehicle();
-        assertNotNull(ticketDAO.getTicket("ABCDEF").getOutTime());
-        assertNotNull(ticketDAO.getTicket("ABCDEF").getPrice());
+        //THEN
+        testParkingACar();
+        try {
+            Thread.sleep(1000);
+            parkingService.processExitingVehicle();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        //WHEN
+            Ticket ticket = ticketDAO.getTicket("ABCDEF");
+            assertNotNull(ticket.getOutTime());
+            assertEquals(1.5, ticket.getPrice());
+        }
+    }
+
+    @Test
+    public void testParkingLotExitRecurringUser() {
+        //GIVEN
+        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
+
+        Ticket ticketOne = new Ticket();
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
+        Date inTimeTicketOne = new Date();
+        inTimeTicketOne.setTime(System.currentTimeMillis() - (60 * 60 * 1000));
+        Date outTimeTicketOne = new Date();
+        outTimeTicketOne.setTime(System.currentTimeMillis());
+
+        ticketOne.setParkingSpot(parkingSpot);
+        ticketOne.setVehicleRegNumber("ABCDEF");
+        ticketOne.setInTime(inTimeTicketOne);
+        ticketOne.setOutTime(outTimeTicketOne);
+        ticketDAO.saveTicket(ticketOne);
+
+        //THEN
+        parkingService.processIncomingVehicle();
+        Ticket ticketTwo = ticketDAO.getTicket("ABCDEF");
+        Date inTimeTicketTwo = new Date();
+        inTimeTicketTwo.setTime(System.currentTimeMillis() - (60 * 60 * 1000));
+        Date outTimeTicketTwo = new Date();
+        outTimeTicketTwo.setTime(System.currentTimeMillis());
+
+        ticketTwo.setInTime(inTimeTicketTwo);
+        ticketTwo.setOutTime(outTimeTicketTwo);
+        ticketDAO.updateTicket(ticketTwo);
+        try {
+            Thread.sleep(1000);
+            parkingService.processExitingVehicle();
+            } catch (InterruptedException e) {
+            e.printStackTrace();
+        //WHEN
+            ticketTwo = ticketDAO.getTicket("ABCDEF");
+            assertEquals(2, ticketDAO.getNbTicket("ABCDEF"));
+            assertEquals(0.95 * Fare.CAR_RATE_PER_HOUR, ticketTwo.getPrice());
+        }
     }
 }
     

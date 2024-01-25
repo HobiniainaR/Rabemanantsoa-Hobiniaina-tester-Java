@@ -30,7 +30,7 @@ public class ParkingService {
     public void processIncomingVehicle() {
         try{
 <span class="fc" id="L32">            ParkingSpot parkingSpot = getNextParkingNumberIfAvailable();</span>
-<span class="pc bpc" id="L33" title="1 of 4 branches missed.">            if(parkingSpot !=null &amp;&amp; parkingSpot.getId() &gt; 0){</span>
+<span class="pc bpc" id="L33" title="2 of 4 branches missed.">            if(parkingSpot !=null &amp;&amp; parkingSpot.getId() &gt; 0){</span>
 <span class="fc" id="L34">                String vehicleRegNumber = getVehichleRegNumber();</span>
 <span class="fc" id="L35">                parkingSpot.setAvailable(false);</span>
 <span class="fc" id="L36">                parkingSpotDAO.updateParking(parkingSpot);//allot this parking space and mark it's availability as false</span>
@@ -38,15 +38,15 @@ public class ParkingService {
 <span class="fc" id="L38">                Date inTime = new Date();</span>
 <span class="fc" id="L39">                Ticket ticket = new Ticket();</span>
                 //ID, PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME)
-                //ticket.setId(ticketID);
+                
 <span class="fc" id="L42">                ticket.setParkingSpot(parkingSpot);</span>
-                //ticket.setVehicleRegNumber(vehicleRegNumber);
+<span class="fc" id="L43">                ticket.setVehicleRegNumber(vehicleRegNumber);</span>
 <span class="fc" id="L44">                ticket.setPrice(0);</span>
 <span class="fc" id="L45">                ticket.setInTime(inTime);</span>
 <span class="fc" id="L46">                ticket.setOutTime(null);</span>
 <span class="fc" id="L47">                ticketDAO.saveTicket(ticket);</span>
-<span class="pc bpc" id="L48" title="1 of 2 branches missed.">                if(ticketDAO.getNbTicket(vehicleRegNumber)&gt;1) {</span>
-<span class="nc" id="L49">                	System.out.println(&quot;Welcome back!, you will receive a 5% discount.&quot;);</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">                if(ticketDAO.getNbTicket(vehicleRegNumber)&gt;1) {</span>
+<span class="fc" id="L49">                	System.out.println(&quot;Welcome back!, you will receive a 5% discount.&quot;);</span>
                 }
 <span class="fc" id="L51">                System.out.println(&quot;Generated Ticket and saved in DB&quot;);</span>
 <span class="fc" id="L52">                System.out.println(&quot;Please park your vehicle in spot number:&quot;+parkingSpot.getId());</span>
@@ -106,7 +106,7 @@ public class ParkingService {
 <span class="fc" id="L106">            Ticket ticket = ticketDAO.getTicket(vehicleRegNumber);</span>
 <span class="fc" id="L107">            Date outTime = new Date();</span>
 <span class="fc" id="L108">            ticket.setOutTime(outTime);</span>
-<span class="pc bpc" id="L109" title="1 of 2 branches missed.">            fareCalculatorService.calculateFare(ticket,ticketDAO.getNbTicket(vehicleRegNumber)&gt;1);</span>
+<span class="fc bfc" id="L109" title="All 2 branches covered.">            fareCalculatorService.calculateFare(ticket,ticketDAO.getNbTicket(vehicleRegNumber)&gt;1);</span>
 <span class="fc bfc" id="L110" title="All 2 branches covered.">            if(ticketDAO.updateTicket(ticket)) {</span>
 <span class="fc" id="L111">                ParkingSpot parkingSpot = ticket.getParkingSpot();</span>
 <span class="fc" id="L112">                parkingSpot.setAvailable(true);</span>
@@ -116,8 +116,8 @@ public class ParkingService {
 <span class="fc" id="L116">            }else{</span>
 <span class="fc" id="L117">                System.out.println(&quot;Unable to update ticket information. Error occurred&quot;);</span>
             }
-<span class="fc" id="L119">        }catch(Exception e){</span>
-<span class="fc" id="L120">            logger.error(&quot;Unable to process exiting vehicle&quot;,e);</span>
+<span class="nc" id="L119">        }catch(Exception e){</span>
+<span class="nc" id="L120">            logger.error(&quot;Unable to process exiting vehicle&quot;,e);</span>
 <span class="fc" id="L121">        }</span>
 <span class="fc" id="L122">    }</span>
 }
