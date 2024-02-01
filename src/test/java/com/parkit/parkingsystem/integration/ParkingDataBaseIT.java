@@ -96,9 +96,10 @@ public class ParkingDataBaseIT {
          parkingService.processExitingVehicle();
 
             //WHEN
-            ticket = ticketDAO.getTicket("ABCDEF");
-            assertNotNull(ticket.getOutTime());
-            assertEquals(1.5, ticket.getPrice(),0.001);
+         ticket = ticketDAO.getTicket("ABCDEF");
+
+         assertNotNull(ticket.getOutTime());
+         assertEquals(1.5, ticket.getPrice(),0.001);
 
     }
 
@@ -133,9 +134,10 @@ public class ParkingDataBaseIT {
         ticketDAO.updateTicket(ticketTwo);
             parkingService.processExitingVehicle();
         //WHEN
-            ticketTwo = ticketDAO.getTicket("ABCDEF");
-            assertEquals(2, ticketDAO.getNbTicket("ABCDEF"));
-            assertEquals(0.95 * Fare.CAR_RATE_PER_HOUR, ticketTwo.getPrice(),0.001);
+        ticketTwo = ticketDAO.getTicket("ABCDEF");
+
+        assertEquals(2, ticketDAO.getNbTicket("ABCDEF"));
+        assertEquals(0.95 * Fare.CAR_RATE_PER_HOUR, ticketTwo.getPrice(),0.001);
 
     }
 }

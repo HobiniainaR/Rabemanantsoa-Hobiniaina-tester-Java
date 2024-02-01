@@ -39,9 +39,7 @@ public class FareCalculatorService {
     private void calculateCarFare(Ticket ticket, double duration) {
         if (duration < 0.5) {
             ticket.setPrice(0);
-        } else if (duration <= 1) {
-            ticket.setPrice(duration*Fare.CAR_RATE_PER_HOUR);
-        } else {
+        }else {
             ticket.setPrice(duration*Fare.CAR_RATE_PER_HOUR);
         }
     }
@@ -49,10 +47,8 @@ public class FareCalculatorService {
     private void calculateBikeFare(Ticket ticket, double duration) {
         if (duration < 0.5) {
             ticket.setPrice(0);
-        } else if (duration <= 1) {
-            ticket.setPrice(duration*Fare.BIKE_RATE_PER_HOUR);
-        } else {
-            ticket.setPrice(duration*Fare.BIKE_RATE_PER_HOUR);
+        }else {
+        ticket.setPrice(duration*Fare.BIKE_RATE_PER_HOUR);
         }
     }
     
