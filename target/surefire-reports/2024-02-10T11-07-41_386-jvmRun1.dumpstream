@@ -1,0 +1,226 @@
+# Created on 2024-02-10T11:07:44.807
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: null
+java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:391)
+	at java.lang.Thread.run(Thread.java:750)
+
+
+# Created on 2024-02-10T11:07:45.309
+Unexpected IOException with stream: 11:07:44.897 [main] ERROR ParkingService - Error fetching next available parking slot
+java.lang.Exception: Error fetching parking number from DB. Parking slots might be full
+	at com.parkit.parkingsystem.service.ParkingService.getNextParkingNumberIfAvailable(ParkingService.java:74) ~[classes/:?]
+	at com.parkit.parkingsystem.ParkingServiceTest.testGetNextParkingNumberIfAvailableParkingNumberNotFound(ParkingServiceTest.java:123) ~[test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_402]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_402]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_402]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_402]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:532) ~[junit-platform-commons-1.3.2.jar:1.3.2]
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:115) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:171) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:167) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:114) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:59) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$4(NodeTestTask.java:108) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:98) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:74) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1259) ~[?:1.8.0_402]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$4(NodeTestTask.java:112) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:98) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:74) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1259) ~[?:1.8.0_402]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$4(NodeTestTask.java:112) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72) [junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:98) [junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:74) [junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32) [junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) [junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51) [junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:170) [junit-platform-launcher-1.2.0.jar:1.2.0]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:154) [junit-platform-launcher-1.2.0.jar:1.2.0]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:90) [junit-platform-launcher-1.2.0.jar:1.2.0]
+	at org.junit.platform.surefire.provider.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:132) [junit-platform-surefire-provider-1.2.0.jar:1.2.0]
+	at org.junit.platform.surefire.provider.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:111) [junit-platform-surefire-provider-1.2.0.jar:1.2.0]
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:379) [surefire-booter-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:340) [surefire-booter-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:125) [surefire-booter-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:413) [surefire-booter-2.21.0.jar:2.21.0]
+
+
+# Created on 2024-02-10T11:07:45.328
+Unexpected IOException: 6,1,com.parkit.parkingsystem.ParkingServiceTest,testGetNextParkingNumberIfAvailableParkingNumberNotFound,null,null,null
+
+
+# Created on 2024-02-10T11:07:45.332
+Unexpected IOException: 5,1,com.parkit.parkingsystem.ParkingServiceTest,processExitingVehicleTestUnableUpdate,null,null,null
+
+
+# Created on 2024-02-10T11:07:45.340
+Unexpected IOException with stream: Please type the vehicle registration number and press enter key
+
+
+# Created on 2024-02-10T11:07:45.342
+Unexpected IOException with stream: Unable to update ticket information. Error occurred
+
+
+# Created on 2024-02-10T11:07:45.357
+Unexpected IOException: 6,1,com.parkit.parkingsystem.ParkingServiceTest,processExitingVehicleTestUnableUpdate,null,null,null
+
+
+# Created on 2024-02-10T11:07:45.359
+Unexpected IOException: 5,1,com.parkit.parkingsystem.ParkingServiceTest,testGetNextParkingNumberIfAvailableParkingNumberWrongArgum,null,null,null
+
+
+# Created on 2024-02-10T11:07:45.362
+Unexpected IOException with stream: Please select vehicle type from menu
+
+
+# Created on 2024-02-10T11:07:45.362
+Unexpected IOException with stream: 1 CAR
+
+
+# Created on 2024-02-10T11:07:45.363
+Unexpected IOException with stream: 2 BIKE
+
+
+# Created on 2024-02-10T11:07:45.363
+Unexpected IOException with stream: Incorrect input provided
+
+
+# Created on 2024-02-10T11:07:45.366
+Unexpected IOException with stream: 11:07:45.364 [main] ERROR ParkingService - Error parsing user input for type of vehicle
+java.lang.IllegalArgumentException: Entered input is invalid
+	at com.parkit.parkingsystem.service.ParkingService.getVehichleType(ParkingService.java:98) ~[classes/:?]
+	at com.parkit.parkingsystem.service.ParkingService.getNextParkingNumberIfAvailable(ParkingService.java:69) ~[classes/:?]
+	at com.parkit.parkingsystem.ParkingServiceTest.testGetNextParkingNumberIfAvailableParkingNumberWrongArgum(ParkingServiceTest.java:136) ~[test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_402]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_402]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_402]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_402]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:532) ~[junit-platform-commons-1.3.2.jar:1.3.2]
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:115) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:171) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:167) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:114) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:59) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$4(NodeTestTask.java:108) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:98) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:74) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1259) ~[?:1.8.0_402]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$4(NodeTestTask.java:112) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:98) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:74) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1259) ~[?:1.8.0_402]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$4(NodeTestTask.java:112) ~[junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72) [junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:98) [junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:74) [junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32) [junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) [junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51) [junit-platform-engine-1.3.2.jar:1.3.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:170) [junit-platform-launcher-1.2.0.jar:1.2.0]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:154) [junit-platform-launcher-1.2.0.jar:1.2.0]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:90) [junit-platform-launcher-1.2.0.jar:1.2.0]
+	at org.junit.platform.surefire.provider.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:132) [junit-platform-surefire-provider-1.2.0.jar:1.2.0]
+	at org.junit.platform.surefire.provider.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:111) [junit-platform-surefire-provider-1.2.0.jar:1.2.0]
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:379) [surefire-booter-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:340) [surefire-booter-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:125) [surefire-booter-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:413) [surefire-booter-2.21.0.jar:2.21.0]
+
+
+# Created on 2024-02-10T11:07:45.368
+Unexpected IOException: 6,1,com.parkit.parkingsystem.ParkingServiceTest,testGetNextParkingNumberIfAvailableParkingNumberWrongArgum,null,null,null
+
+
+# Created on 2024-02-10T11:07:45.369
+Unexpected IOException: 5,1,com.parkit.parkingsystem.ParkingServiceTest,testGetNextParkingNumberIfAvailable,null,null,null
+
+
+# Created on 2024-02-10T11:07:45.371
+Unexpected IOException with stream: Please select vehicle type from menu
+
+
+# Created on 2024-02-10T11:07:45.372
+Unexpected IOException with stream: 1 CAR
+
+
+# Created on 2024-02-10T11:07:45.372
+Unexpected IOException with stream: 2 BIKE
+
+
+# Created on 2024-02-10T11:07:45.374
+Unexpected IOException: 6,1,com.parkit.parkingsystem.ParkingServiceTest,testGetNextParkingNumberIfAvailable,null,null,null
+
+
+# Created on 2024-02-10T11:07:45.377
+Unexpected IOException: 5,1,com.parkit.parkingsystem.ParkingServiceTest,processExitingVehicleTest,null,null,null
+
+
+# Created on 2024-02-10T11:07:45.380
+Unexpected IOException with stream: Please type the vehicle registration number and press enter key
+
+
+# Created on 2024-02-10T11:07:45.383
+Unexpected IOException with stream: Please pay the parking fare:1.50000125
+
+
+# Created on 2024-02-10T11:07:45.384
+Unexpected IOException with stream: Recorded out-time for vehicle number:ABCDEF is:Sat Feb 10 11:07:45 CET 2024
+
+
+# Created on 2024-02-10T11:07:45.387
+Unexpected IOException: 6,1,com.parkit.parkingsystem.ParkingServiceTest,processExitingVehicleTest,null,null,null
+
+
+# Created on 2024-02-10T11:07:45.389
+Unexpected IOException: 5,1,com.parkit.parkingsystem.ParkingServiceTest,processIncomingVehicleTest,null,null,null
+
+
+# Created on 2024-02-10T11:07:45.392
+Unexpected IOException with stream: Please select vehicle type from menu
+
+
+# Created on 2024-02-10T11:07:45.392
+Unexpected IOException with stream: 1 CAR
+
+
+# Created on 2024-02-10T11:07:45.393
+Unexpected IOException with stream: 2 BIKE
+
+
+# Created on 2024-02-10T11:07:45.394
+Unexpected IOException with stream: Please type the vehicle registration number and press enter key
+
+
+# Created on 2024-02-10T11:07:45.395
+Unexpected IOException with stream: Generated Ticket and saved in DB
+
+
+# Created on 2024-02-10T11:07:45.396
+Unexpected IOException with stream: Please park your vehicle in spot number:1
+
+
+# Created on 2024-02-10T11:07:45.397
+Unexpected IOException with stream: Recorded in-time for vehicle number:ABCDEF is:Sat Feb 10 11:07:45 CET 2024
+
+
+# Created on 2024-02-10T11:07:45.398
+Unexpected IOException: 6,1,com.parkit.parkingsystem.ParkingServiceTest,processIncomingVehicleTest,null,null,null
+
+
+# Created on 2024-02-10T11:07:45.399
+Unexpected IOException: 2,1,org.junit.platform.surefire.provider.JUnitPlatformProvider,com.parkit.parkingsystem.ParkingServiceTest,null,null,null
+
+
